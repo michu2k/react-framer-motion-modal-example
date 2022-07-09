@@ -1,3 +1,16 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": "next/core-web-vitals",
+  "rules": {
+    "indent": ["error", 4],
+    "semi": ["warn", "always"],
+    "quotes": ["error", "double", { "allowTemplateLiterals": true }],
+    "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 0}],
+    "arrow-parens": ["error", "always"],
+    "array-bracket-spacing": ["error", "never"],
+    "object-curly-spacing": ["error", "never"],
+    "no-multi-spaces": "error",
+    "no-unused-vars": "warn",
+    "comma-dangle": "warn",
+    "react/jsx-tag-spacing": "error"
+  }
 }
