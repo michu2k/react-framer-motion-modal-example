@@ -1,7 +1,13 @@
 {
-  "extends": "next/core-web-vitals",
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint"],
   "rules": {
-    "indent": ["error", 4],
+    "indent": "off",
+    "@typescript-eslint/indent": ["error", 4],
     "semi": ["warn", "always"],
     "quotes": ["error", "double", { "allowTemplateLiterals": true }],
     "no-multiple-empty-lines": ["error", {"max": 1, "maxEOF": 0}],
@@ -11,6 +17,7 @@
     "no-multi-spaces": "error",
     "no-unused-vars": "warn",
     "comma-dangle": "warn",
-    "react/jsx-tag-spacing": "error"
+    "react/jsx-tag-spacing": "error",
+    "comma-spacing": ["error"]
   }
 }
