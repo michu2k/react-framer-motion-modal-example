@@ -27,6 +27,8 @@ const Home: NextPage = () => {
                 <title>Generic Modal component</title>
             </Head>
 
+            <h1>Modal</h1>
+
             <p className={styles.description}>
                 A basic example how to create an animatable Modal component
                 using the <a href="https://www.framer.com/motion/" className={styles.link} target="_blank" rel="noreferrer">framer-motion</a> package.
