@@ -23,13 +23,18 @@
 }
 
 .openModalBtn {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: $color-white;
   background-color: $color-blue;
   cursor: pointer;
   width: 140px;
   height: 40px;
   border-radius: 20px;
+  transition: background-color .15s ease-in-out;
   margin-top: 20px;
   border: 0;
+
+  &:hover {
+    background-color: $color-blue-bright;
+  }
 }

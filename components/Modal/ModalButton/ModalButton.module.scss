@@ -1,0 +1,23 @@
+@use "/styles/variables" as *;
+
+.modalBtn {
+  font-size: 1.4rem;
+  color: $color-white;
+  background-color: $color-black;
+  cursor: pointer;
+  width: 140px;
+  height: 40px;
+  border-radius: 8px;
+  margin-top: 20px;
+  transition: {
+    property: background-color, color;
+    duration: 0.15s;
+    timing-function: ease-in-out;
+  };
+  border: 0;
+
+  &:hover {
+    color: $color-black;
+    background-color: $color-gray-bright;
+  }
+}

@@ -1,7 +1,7 @@
 import type {NextPage} from "next";
 import Head from "next/head";
 import {useState} from "react";
-import Modal from "../components/Modal";
+import Modal, {ModalText, ModalButton} from "../components/Modal";
 import styles from "./Home.module.scss";
 
 const Home: NextPage = () => {
@@ -15,11 +15,16 @@ const Home: NextPage = () => {
         setModalVisible(false);
     }
 
+    function handleConfirmBtnClick() {
+        // some logic...
+
+        hideModal();
+    }
+
     return (
         <div className={styles.container}>
             <Head>
                 <title>Generic Modal component</title>
-                <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <p className={styles.description}>
@@ -31,7 +36,17 @@ const Home: NextPage = () => {
                 Open modal
             </button>
 
-            <Modal isVisible={modalVisible} onClickCloseBtn={hideModal} />
+            <Modal isVisible={modalVisible} heading="Billing info updated" onClickCloseBtn={hideModal}>
+                <ModalText isCentered>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    Sapiente nobis voluptatibus itaque repudiandae voluptas eligendi autem pariatur debitis libero
+                    tempore dignissimos velit vitae eum, dolorem provident odit assumenda.
+                </ModalText>
+
+                <ModalButton onClick={handleConfirmBtnClick}>
+                    Confirm
+                </ModalButton>
+            </Modal>
         </div>
     );
 };
