@@ -4,10 +4,11 @@ import styles from "./ModalButton.module.scss";
 
 type ModalButtonProps = PropsWithChildren<{
     onClick: (e: React.MouseEvent) => void;
+    type?: "submit" | "reset" | "button" | undefined;
     className?: string;
 }>
 
-const ModalButton = ({onClick, className, children, ...props}: ModalButtonProps) => {
+const ModalButton = ({onClick, type = "button", className, children, ...props}: ModalButtonProps) => {
 
     const modalBtnClassName = cn(
         styles.modalBtn,
@@ -15,7 +16,7 @@ const ModalButton = ({onClick, className, children, ...props}: ModalButtonProps)
     );
 
     return (
-        <button onClick={onClick} className={modalBtnClassName} {...props}>
+        <button type={type} onClick={onClick} className={modalBtnClassName} {...props}>
             {children}
         </button>
     );

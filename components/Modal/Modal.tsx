@@ -1,4 +1,4 @@
-import React, {PropsWithChildren} from "react";
+import React, {PropsWithChildren, useId} from "react";
 import {AnimatePresence, motion} from "framer-motion";
 import Image from "next/image";
 import cn from "classnames";
@@ -22,6 +22,7 @@ const Modal: React.FC<ModalProps> = ({
     backdropClassName,
     children
 }) => {
+    const modalId = useId();
 
     const modalMainClassName = cn(
         styles.modal,
@@ -36,14 +37,20 @@ const Modal: React.FC<ModalProps> = ({
     return (
         <AnimatePresence>
             {isVisible && <>
-                <motion.div key="modal" {...modalAnimation} className={modalMainClassName}>
-                    <button className={styles.closeModalBtn} onClick={onClickCloseBtn}>
+                <motion.div
+                    key="modal"
+                    role="dialog"
+                    aria-modal="true"
+                    aria-labelledby={`${modalId}-heading`}
+                    {...modalAnimation}
+                    className={modalMainClassName}>
+                    <button type="button" className={styles.closeModalBtn} onClick={onClickCloseBtn}>
                         <Image src={CrossSvg} alt="" layout="responsive" />
                         <span className="sr-only">Close</span>
                     </button>
 
                     <div className={styles.modalHeader}>
-                        <h2 className={styles.modalHeading}>{heading}</h2>
+                        <h2 id={`${modalId}-heading`} className={styles.modalHeading}>{heading}</h2>
                     </div>
 
                     <div className={styles.modalContent}>

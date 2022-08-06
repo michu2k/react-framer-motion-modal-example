@@ -32,11 +32,11 @@ const Home: NextPage = () => {
                 using the <a href="https://www.framer.com/motion/" className={styles.link} target="_blank" rel="noreferrer">framer-motion</a> package.
             </p>
 
-            <button onClick={showModal} className={styles.openModalBtn}>
+            <button type="button" onClick={showModal} className={styles.openModalBtn}>
                 Open modal
             </button>
 
-            <Modal isVisible={modalVisible} heading="Billing info updated" onClickCloseBtn={hideModal}>
+            <Modal isVisible={modalVisible} heading="Billing info update" onClickCloseBtn={hideModal}>
                 <ModalText isCentered>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Sapiente nobis voluptatibus itaque repudiandae voluptas eligendi autem pariatur debitis libero
