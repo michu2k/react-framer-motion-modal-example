@@ -55,7 +55,9 @@ const Modal: React.FC<ModalProps> = ({
                     </button>
 
                     <div className={styles.modalHeader}>
-                        <h2 id={headingId} className={styles.modalHeading}>{heading}</h2>
+                        <h2 id={headingId} className={styles.modalHeading}>
+                            {heading}
+                        </h2>
                     </div>
 
                     <div className={styles.modalContent}>
