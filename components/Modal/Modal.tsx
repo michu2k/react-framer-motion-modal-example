@@ -1,8 +1,8 @@
 import React, {PropsWithChildren, useId} from "react";
-import {AnimatePresence, motion} from "framer-motion";
+import {AnimatePresence, AnimationProps, motion} from "framer-motion";
 import Image from "next/image";
 import cn from "classnames";
-import {modalAnimation, modalBackdropAnimation} from "./Modal.utils";
+import {defaultModalAnimation, defaultModalBackdropAnimation} from "./Modal.utils";
 import CrossSvg from "../../public/cross.svg";
 import styles from "./Modal.module.scss";
 
@@ -12,6 +12,8 @@ type ModalProps = PropsWithChildren<{
     onClickCloseBtn: () => void;
     modalClassName?: string;
     backdropClassName?: string;
+    modalAnimation?: AnimationProps;
+    modalBackdropAnimation?: AnimationProps;
 }>
 
 const Modal: React.FC<ModalProps> = ({
@@ -20,6 +22,8 @@ const Modal: React.FC<ModalProps> = ({
     onClickCloseBtn,
     modalClassName,
     backdropClassName,
+    modalAnimation = defaultModalAnimation,
+    modalBackdropAnimation = defaultModalBackdropAnimation,
     children
 }) => {
     const modalId = useId();
