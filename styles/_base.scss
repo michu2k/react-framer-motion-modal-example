@@ -1,0 +1,44 @@
+@use "/styles/variables" as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+}
+
+html,
+body {
+  font-family: $font-poppins;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: $font-weight-semi-bold;
+  margin: 0;
+}
+
+button {
+  font-family: $font-poppins;
+  font-weight: $font-weight-semi-bold;
+}
