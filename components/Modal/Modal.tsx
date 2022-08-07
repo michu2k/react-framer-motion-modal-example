@@ -27,6 +27,7 @@ const Modal: React.FC<ModalProps> = ({
     children
 }) => {
     const modalId = useId();
+    const headingId = `${modalId}-heading`;
 
     const modalMainClassName = cn(
         styles.modal,
@@ -45,7 +46,7 @@ const Modal: React.FC<ModalProps> = ({
                     key="modal"
                     role="dialog"
                     aria-modal="true"
-                    aria-labelledby={`${modalId}-heading`}
+                    aria-labelledby={headingId}
                     {...modalAnimation}
                     className={modalMainClassName}>
                     <button type="button" className={styles.closeModalBtn} onClick={onClickCloseBtn}>
@@ -54,7 +55,7 @@ const Modal: React.FC<ModalProps> = ({
                     </button>
 
                     <div className={styles.modalHeader}>
-                        <h2 id={`${modalId}-heading`} className={styles.modalHeading}>{heading}</h2>
+                        <h2 id={headingId} className={styles.modalHeading}>{heading}</h2>
                     </div>
 
                     <div className={styles.modalContent}>
@@ -62,7 +63,10 @@ const Modal: React.FC<ModalProps> = ({
                     </div>
                 </motion.div>
 
-                <motion.div key="modal-backdrop" {...modalBackdropAnimation} className={modalBackdropClassName} />
+                <motion.div
+                    key="modal-backdrop"
+                    {...modalBackdropAnimation}
+                    className={modalBackdropClassName} />
             </>}
         </AnimatePresence>
     );
