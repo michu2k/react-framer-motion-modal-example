@@ -26,8 +26,7 @@ const Modal: React.FC<ModalProps> = ({
     modalBackdropAnimation = defaultModalBackdropAnimation,
     children
 }) => {
-    const modalId = useId();
-    const headingId = `${modalId}-heading`;
+    const headingId = useId();
 
     const modalMainClassName = cn(
         styles.modal,
