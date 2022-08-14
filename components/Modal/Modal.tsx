@@ -9,7 +9,7 @@ import styles from "./Modal.module.scss";
 type ModalProps = PropsWithChildren<{
     isVisible: boolean;
     heading: string;
-    onClickCloseBtn: () => void;
+    onClickCloseBtn: (e: React.MouseEvent) => void;
     modalClassName?: string;
     backdropClassName?: string;
     modalAnimation?: AnimationProps;
