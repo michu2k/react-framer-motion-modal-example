@@ -7,12 +7,12 @@ import CrossSvg from "../../public/cross.svg";
 import styles from "./Modal.module.scss";
 
 type ModalProps = PropsWithChildren<{
-    isVisible: boolean;
-    heading: string;
-    onClickCloseBtn: (e: React.MouseEvent) => void;
-    onClickBackdrop?: (e: React.MouseEvent) => void;
-    modalClassName?: string;
-    backdropClassName?: string;
+    isVisible: boolean; // Modal visibility
+    heading: string; // Modal heading
+    onClickCloseBtn: (e: React.MouseEvent) => void; // Callback when the close button is clicked
+    onClickBackdrop?: (e: React.MouseEvent) => void; // Callback when the backdrop is clicked
+    modalClassName?: string; // Additional class name for the modal
+    backdropClassName?: string; // additional class name for the backdrop
     modalAnimation?: AnimationProps; // type imported from framer-motion
     modalBackdropAnimation?: AnimationProps; // type imported from framer-motion
 }>
