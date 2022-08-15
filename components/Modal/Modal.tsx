@@ -10,29 +10,34 @@ type ModalProps = PropsWithChildren<{
     isVisible: boolean;
     heading: string;
     onClickCloseBtn: (e: React.MouseEvent) => void;
+    onClickBackdrop?: (e: React.MouseEvent) => void;
     modalClassName?: string;
     backdropClassName?: string;
-    modalAnimation?: AnimationProps;
-    modalBackdropAnimation?: AnimationProps;
+    modalAnimation?: AnimationProps; // type imported from framer-motion
+    modalBackdropAnimation?: AnimationProps; // type imported from framer-motion
 }>
 
 const Modal: React.FC<ModalProps> = ({
     isVisible,
     heading,
     onClickCloseBtn,
+    onClickBackdrop = () => null,
     modalClassName,
     backdropClassName,
     modalAnimation = defaultModalAnimation,
     modalBackdropAnimation = defaultModalBackdropAnimation,
     children
 }) => {
+    // headingId is used to set the "aria-labelledby" attribute of the modal dialog element
     const headingId = useId();
 
+    // Combine the modal class names from the props and the default class names
     const modalMainClassName = cn(
         styles.modal,
         modalClassName
     );
 
+    // Combine the backdrop class names from the props and the default class names
     const modalBackdropClassName = cn(
         styles.modalBackdrop,
         backdropClassName
@@ -67,6 +72,7 @@ const Modal: React.FC<ModalProps> = ({
                 <motion.div
                     key="modal-backdrop"
                     {...modalBackdropAnimation}
+                    onClick={onClickBackdrop}
                     className={modalBackdropClassName} />
             </>}
         </AnimatePresence>

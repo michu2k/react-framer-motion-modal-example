@@ -5,6 +5,7 @@ import Modal, {ModalText, ModalButton} from "../components/Modal";
 import styles from "./Home.module.scss";
 
 const Home: NextPage = () => {
+    // State used to control the modal
     const [modalVisible, setModalVisible] = useState<boolean>(false);
 
     function showModal() {
@@ -30,8 +31,9 @@ const Home: NextPage = () => {
             <h1>Modal</h1>
 
             <p className={styles.description}>
-                A basic example how to create an animatable Modal component
-                using the <a href="https://www.framer.com/motion/" className={styles.link} target="_blank" rel="noreferrer">framer-motion</a> package.
+                A basic example how to create an animatable Modal component using the {" "}
+                <a href="https://www.framer.com/motion/" className={styles.link} target="_blank" rel="noreferrer">framer-motion</a> {" "}
+                package.
             </p>
 
             <button type="button" onClick={showModal} className={styles.openModalBtn}>

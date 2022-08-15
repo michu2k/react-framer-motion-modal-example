@@ -8,6 +8,9 @@ type ModalButtonProps = PropsWithChildren<{
     className?: string;
 }>
 
+/**
+ * A component that renders a button inside a modal.
+ */
 const ModalButton = ({onClick, type = "button", className, children, ...props}: ModalButtonProps) => {
 
     const modalBtnClassName = cn(

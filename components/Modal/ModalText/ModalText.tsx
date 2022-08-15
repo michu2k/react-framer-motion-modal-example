@@ -7,6 +7,9 @@ type ModalTextProps = PropsWithChildren<{
     isCentered?: boolean;
 }>
 
+/**
+ * A component that renders text inside a modal.
+ */
 const ModalText = ({className, isCentered, children}: ModalTextProps) => {
 
     const modalTextClassName = cn(
