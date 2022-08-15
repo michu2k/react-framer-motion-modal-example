@@ -15,6 +15,7 @@
     timing-function: ease-in-out;
   };
   border: 0;
+  flex-shrink: 0;
 
   &:hover {
     color: $color-black;
