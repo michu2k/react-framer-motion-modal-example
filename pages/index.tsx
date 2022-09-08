@@ -1,7 +1,7 @@
-import type {NextPage} from "next";
-import Head from "next/head";
 import {useState} from "react";
-import Modal, {ModalText, ModalButton} from "../components/Modal";
+import Head from "next/head";
+import type {NextPage} from "next";
+import Modal from "../components/Modal";
 import styles from "./Home.module.scss";
 
 const Home: NextPage = () => {
@@ -30,7 +30,7 @@ const Home: NextPage = () => {
 
             <h1>Modal</h1>
 
-            <p className={styles.description}>
+            <p className={styles.demoDescription}>
                 A basic example how to create an animatable Modal component using the {" "}
                 <a href="https://www.framer.com/motion/" className={styles.link} target="_blank" rel="noreferrer">framer-motion</a> {" "}
                 package.
@@ -41,15 +41,15 @@ const Home: NextPage = () => {
             </button>
 
             <Modal isVisible={modalVisible} heading="Billing info update" onClickCloseBtn={hideModal}>
-                <ModalText isCentered>
+                <p className={styles.text}>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Sapiente nobis voluptatibus itaque repudiandae voluptas eligendi autem pariatur debitis libero
                     tempore dignissimos velit vitae eum, dolorem provident odit assumenda.
-                </ModalText>
+                </p>
 
-                <ModalButton onClick={handleConfirmBtnClick}>
+                <button type="button" onClick={handleConfirmBtnClick} className={styles.confirmBtn}>
                     Confirm
-                </ModalButton>
+                </button>
             </Modal>
         </div>
     );
