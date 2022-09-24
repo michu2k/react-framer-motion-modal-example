@@ -11,10 +11,9 @@ type ModalProps = PropsWithChildren<{
     heading: string; // Modal heading
     onClickCloseBtn: (e: React.MouseEvent) => void; // Callback when the close button is clicked
     onClickBackdrop?: (e: React.MouseEvent) => void; // Callback when the backdrop is clicked
-    modalClassName?: string; // Additional class name for the modal
-    backdropClassName?: string; // additional class name for the backdrop
-    modalAnimation?: AnimationProps; // type imported from framer-motion
-    modalBackdropAnimation?: AnimationProps; // type imported from framer-motion
+    modalClassName?: string; // Additional class for the modal
+    modalAnimation?: AnimationProps; // Alternative modal animation, type imported from framer-motion
+    modalBackdropAnimation?: AnimationProps; // Alternative backdrop animation, type imported from framer-motion
 }>
 
 const Modal: React.FC<ModalProps> = ({
@@ -23,7 +22,6 @@ const Modal: React.FC<ModalProps> = ({
     onClickCloseBtn,
     onClickBackdrop = () => null,
     modalClassName,
-    backdropClassName,
     modalAnimation = defaultModalAnimation,
     modalBackdropAnimation = defaultModalBackdropAnimation,
     children
@@ -35,12 +33,6 @@ const Modal: React.FC<ModalProps> = ({
     const modalMainClassName = cn(
         styles.modal,
         modalClassName
-    );
-
-    // Combine the backdrop class names from the props and the default class names
-    const modalBackdropClassName = cn(
-        styles.modalBackdrop,
-        backdropClassName
     );
 
     return (
@@ -73,7 +65,7 @@ const Modal: React.FC<ModalProps> = ({
                     key="modal-backdrop"
                     {...modalBackdropAnimation}
                     onClick={onClickBackdrop}
-                    className={modalBackdropClassName} />
+                    className={styles.modalBackdrop} />
             </>}
         </AnimatePresence>
     );
