@@ -70,3 +70,9 @@
     background-color: $color-gray-bright;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+}

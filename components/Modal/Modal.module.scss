@@ -65,3 +65,9 @@
     background-color: $color-gray-bright;
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .closeModalBtn {
+    transition: none;
+  }
+}

@@ -1,5 +1,5 @@
 import React, {PropsWithChildren, useId} from "react";
-import {AnimatePresence, AnimationProps, motion} from "framer-motion";
+import {AnimatePresence, AnimationProps, motion, useReducedMotion} from "framer-motion";
 import Image from "next/image";
 import cn from "classnames";
 import {defaultModalAnimation, defaultModalBackdropAnimation} from "./Modal.utils";
@@ -12,8 +12,8 @@ type ModalProps = PropsWithChildren<{
     onClickCloseBtn: (e: React.MouseEvent) => void; // Callback when the close button is clicked
     onClickBackdrop?: (e: React.MouseEvent) => void; // Callback when the backdrop is clicked
     modalClassName?: string; // Additional class for the modal
-    modalAnimation?: AnimationProps; // Alternative modal animation, type imported from framer-motion
-    modalBackdropAnimation?: AnimationProps; // Alternative backdrop animation, type imported from framer-motion
+    animation?: AnimationProps; // Alternative modal animation, type imported from framer-motion
+    backdropAnimation?: AnimationProps; // Alternative backdrop animation, type imported from framer-motion
 }>
 
 const Modal: React.FC<ModalProps> = ({
@@ -22,10 +22,13 @@ const Modal: React.FC<ModalProps> = ({
     onClickCloseBtn,
     onClickBackdrop = () => null,
     modalClassName,
-    modalAnimation = defaultModalAnimation,
-    modalBackdropAnimation = defaultModalBackdropAnimation,
+    animation = defaultModalAnimation,
+    backdropAnimation = defaultModalBackdropAnimation,
     children
 }) => {
+    // A hoolk that returns `true` if the current device has Reduced Motion setting enabled
+    const shouldReduceMotion = useReducedMotion();
+
     // headingId is used to set the "aria-labelledby" attribute of the modal dialog element
     const headingId = useId();
 
@@ -34,6 +37,9 @@ const Modal: React.FC<ModalProps> = ({
         styles.modal,
         modalClassName
     );
+
+    const modalAnimation = shouldReduceMotion ? {} : animation;
+    const modalBackdropAnimation = shouldReduceMotion ? {} : backdropAnimation;
 
     return (
         <AnimatePresence>
