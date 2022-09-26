@@ -26,7 +26,7 @@ const Modal: React.FC<ModalProps> = ({
     backdropAnimation = defaultModalBackdropAnimation,
     children
 }) => {
-    // A hoolk that returns `true` if the current device has Reduced Motion setting enabled
+    // A hook that returns `true` if the current device has Reduced Motion setting enabled
     const shouldReduceMotion = useReducedMotion();
 
     // headingId is used to set the "aria-labelledby" attribute of the modal dialog element
