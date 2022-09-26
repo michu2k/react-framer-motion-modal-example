@@ -9,12 +9,21 @@
   min-height: 100vh;
 }
 
-.description {
-  font-size: 1.6rem;
+.text {
+  font-size: 1.5rem;
+  color: $color-gray;
   line-height: 2.4rem;
-  color: $color-black;
   text-align: center;
+  margin: 16px 0;
+  flex: 1;
+}
+
+.demoDescription {
+  @extend .text;
+
+  color: $color-black;
   max-width: 450px;
+  flex-grow: 0;
 }
 
 .link {
@@ -22,19 +31,48 @@
   border-bottom: 2px solid $color-blue;
 }
 
-.openModalBtn {
+.button {
   font-size: 1.4rem;
   color: $color-white;
-  background-color: $color-blue;
   cursor: pointer;
   width: 140px;
   height: 40px;
-  border-radius: 20px;
-  transition: background-color .15s ease-in-out;
-  margin-top: 20px;
+  transition: {
+    property: background-color, color;
+    duration: 0.15s;
+    timing-function: ease-in-out;
+  };
   border: 0;
+}
+
+.openModalBtn {
+  @extend .button;
+
+  background-color: $color-blue;
+  border-radius: 20px;
+  margin-top: 20px;
 
   &:hover {
     background-color: $color-blue-bright;
+  }
+}
+
+.confirmBtn {
+  @extend .button;
+
+  background-color: $color-black;
+  border-radius: 8px;
+  margin-top: 20px;
+  flex-shrink: 0;
+
+  &:hover {
+    color: $color-black;
+    background-color: $color-gray-bright;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
   }
 }
