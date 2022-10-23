@@ -41,6 +41,7 @@ const Modal: React.FC<ModalProps> = ({
     const modalAnimation = shouldReduceMotion ? {} : animation;
     const modalBackdropAnimation = shouldReduceMotion ? {} : backdropAnimation;
 
+    // A good practice would be to render the Modal inside the React portal
     return (
         <AnimatePresence>
             {isVisible && <>
