@@ -55,7 +55,7 @@ const Modal: React.FC<ModalProps> = ({
                         {...modalAnimation}
                         className={modalMainClassName}>
                         <button type="button" className={styles.closeModalBtn} onClick={onClickCloseBtn}>
-                            <Image src={CrossSvg} alt="" layout="responsive" />
+                            <Image src={CrossSvg} alt="" width={16} height={16} />
                             <span className="sr-only">Close</span>
                         </button>
 
