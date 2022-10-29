@@ -3,6 +3,7 @@ import {AnimatePresence, AnimationProps, motion, useReducedMotion} from "framer-
 import Image from "next/image";
 import cn from "classnames";
 import {defaultModalAnimation, defaultModalBackdropAnimation} from "./Modal.utils";
+import {ClientSidePortal} from "../ClientSidePortal";
 import CrossSvg from "../../public/cross.svg";
 import styles from "./Modal.module.scss";
 
@@ -41,40 +42,42 @@ const Modal: React.FC<ModalProps> = ({
     const modalAnimation = shouldReduceMotion ? {} : animation;
     const modalBackdropAnimation = shouldReduceMotion ? {} : backdropAnimation;
 
-    // A good practice would be to render the Modal inside the React portal
+    // A good practice is to render the Modal inside the React portal
     return (
-        <AnimatePresence>
-            {isVisible && <>
-                <motion.div
-                    key="modal"
-                    role="dialog"
-                    aria-modal="true"
-                    aria-labelledby={headingId}
-                    {...modalAnimation}
-                    className={modalMainClassName}>
-                    <button type="button" className={styles.closeModalBtn} onClick={onClickCloseBtn}>
-                        <Image src={CrossSvg} alt="" layout="responsive" />
-                        <span className="sr-only">Close</span>
-                    </button>
+        <ClientSidePortal>
+            <AnimatePresence>
+                {isVisible && <>
+                    <motion.div
+                        key="modal"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby={headingId}
+                        {...modalAnimation}
+                        className={modalMainClassName}>
+                        <button type="button" className={styles.closeModalBtn} onClick={onClickCloseBtn}>
+                            <Image src={CrossSvg} alt="" layout="responsive" />
+                            <span className="sr-only">Close</span>
+                        </button>
 
-                    <div className={styles.modalHeader}>
-                        <h2 id={headingId} className={styles.modalHeading}>
-                            {heading}
-                        </h2>
-                    </div>
+                        <div className={styles.modalHeader}>
+                            <h2 id={headingId} className={styles.modalHeading}>
+                                {heading}
+                            </h2>
+                        </div>
 
-                    <div className={styles.modalContent}>
-                        {children}
-                    </div>
-                </motion.div>
+                        <div className={styles.modalContent}>
+                            {children}
+                        </div>
+                    </motion.div>
 
-                <motion.div
-                    key="modal-backdrop"
-                    {...modalBackdropAnimation}
-                    onClick={onClickBackdrop}
-                    className={styles.modalBackdrop} />
-            </>}
-        </AnimatePresence>
+                    <motion.div
+                        key="modal-backdrop"
+                        {...modalBackdropAnimation}
+                        onClick={onClickBackdrop}
+                        className={styles.modalBackdrop} />
+                </>}
+            </AnimatePresence>
+        </ClientSidePortal>
     );
 };
 
