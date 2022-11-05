@@ -40,7 +40,7 @@ const Home: NextPage = () => {
                 Open modal
             </button>
 
-            <Modal isVisible={modalVisible} heading="Modal component" onClickCloseBtn={hideModal}>
+            <Modal isVisible={modalVisible} heading="Modal component" onClickCloseBtn={hideModal} onPressEscKey={hideModal}>
                 <p className={styles.text}>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Sapiente nobis voluptatibus itaque repudiandae voluptas eligendi autem pariatur debitis libero

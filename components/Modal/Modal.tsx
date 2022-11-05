@@ -1,4 +1,4 @@
-import React, {PropsWithChildren, useId} from "react";
+import React, {PropsWithChildren, useCallback, useEffect, useId} from "react";
 import {AnimatePresence, AnimationProps, motion, useReducedMotion} from "framer-motion";
 import Image from "next/image";
 import cn from "classnames";
@@ -12,6 +12,7 @@ type ModalProps = PropsWithChildren<{
     heading: string; // Modal heading
     onClickCloseBtn: (e: React.MouseEvent) => void; // Callback when the close button is clicked
     onClickBackdrop?: (e: React.MouseEvent) => void; // Callback when the backdrop is clicked
+    onPressEscKey?: (e: KeyboardEvent) => void; // Callback when the ESC key is clicked
     modalClassName?: string; // Additional class for the modal
     animation?: AnimationProps; // Alternative modal animation, type imported from framer-motion
     backdropAnimation?: AnimationProps; // Alternative backdrop animation, type imported from framer-motion
@@ -22,6 +23,7 @@ const Modal: React.FC<ModalProps> = ({
     heading,
     onClickCloseBtn,
     onClickBackdrop = () => null,
+    onPressEscKey = () => null,
     modalClassName,
     animation = defaultModalAnimation,
     backdropAnimation = defaultModalBackdropAnimation,
@@ -29,6 +31,8 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
     // A hook that returns `true` if the current device has Reduced Motion setting enabled
     const shouldReduceMotion = useReducedMotion();
+
+    // Tip: Adding support for the Tab key is very welcome and user-friendly
 
     // headingId is used to set the "aria-labelledby" attribute of the modal dialog element
     const headingId = useId();
@@ -41,6 +45,18 @@ const Modal: React.FC<ModalProps> = ({
 
     const modalAnimation = shouldReduceMotion ? {} : animation;
     const modalBackdropAnimation = shouldReduceMotion ? {} : backdropAnimation;
+
+    // When the user press the ESC key, onPressEscKey will be called
+    const handleWindowKeyDown = useCallback((e: KeyboardEvent) => {
+        if (e.key === "Escape") {
+            onPressEscKey(e);
+        }
+    }, [onPressEscKey]);
+
+    useEffect(() => {
+        window.addEventListener("keydown", handleWindowKeyDown);
+        return () => window.removeEventListener("keydown", handleWindowKeyDown);
+    }, [handleWindowKeyDown]);
 
     // A good practice is to render the Modal inside the React portal
     return (
