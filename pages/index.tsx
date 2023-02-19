@@ -23,35 +23,39 @@ const Home: NextPage = () => {
     }
 
     return (
-        <main className={styles.mainContainer}>
+        <>
             <Head>
                 <title>Generic Modal component</title>
             </Head>
 
-            <h1>Modal</h1>
+            <main className={styles.mainContainer}>
+                <h1>Modal</h1>
 
-            <p className={styles.demoDescription}>
-                A basic example how to create an animatable Modal component using the {" "}
-                <a href="https://www.framer.com/motion/" className={styles.link} target="_blank" rel="noreferrer">framer-motion</a> {" "}
-                package.
-            </p>
-
-            <button type="button" onClick={showModal} className={styles.openModalBtn}>
-                Open modal
-            </button>
-
-            <Modal isVisible={modalVisible} heading="Modal component" onClickCloseBtn={hideModal} onPressEscKey={hideModal}>
-                <p className={styles.text}>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Sapiente nobis voluptatibus itaque repudiandae voluptas eligendi autem pariatur debitis libero
-                    tempore dignissimos velit vitae eum, dolorem provident odit assumenda.
+                <p className={styles.demoDescription}>
+                    A basic example how to create an animatable Modal component using the {" "}
+                    <a href="https://www.framer.com/motion/" className={styles.link} target="_blank" rel="noreferrer">
+                        framer-motion
+                    </a> {" "}
+                    package.
                 </p>
 
-                <button type="button" onClick={handleConfirmBtnClick} className={styles.confirmBtn}>
-                    Confirm
+                <button type="button" onClick={showModal} className={styles.openModalBtn}>
+                    Open modal
                 </button>
-            </Modal>
-        </main>
+
+                <Modal isVisible={modalVisible} heading="Modal component" onClickCloseBtn={hideModal} onPressEscKey={hideModal}>
+                    <p className={styles.text}>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                        Sapiente nobis voluptatibus itaque repudiandae voluptas eligendi autem pariatur debitis libero
+                        tempore dignissimos velit vitae eum, dolorem provident odit assumenda.
+                    </p>
+
+                    <button type="button" onClick={handleConfirmBtnClick} className={styles.confirmBtn}>
+                        Confirm
+                    </button>
+                </Modal>
+            </main>
+        </>
     );
 };
 
