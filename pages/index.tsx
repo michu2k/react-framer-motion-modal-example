@@ -1,8 +1,8 @@
 import {useState} from "react";
 import Head from "next/head";
 import type {NextPage} from "next";
-import Modal from "../components/Modal";
-import styles from "./Home.module.scss";
+import Modal from "@/components/Modal";
+import styles from "@/styles/Home.module.scss";
 
 const Home: NextPage = () => {
     // State used to control the modal
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
     }
 
     return (
-        <div className={styles.container}>
+        <main className={styles.mainContainer}>
             <Head>
                 <title>Generic Modal component</title>
             </Head>
@@ -51,7 +51,7 @@ const Home: NextPage = () => {
                     Confirm
                 </button>
             </Modal>
-        </div>
+        </main>
     );
 };
 
