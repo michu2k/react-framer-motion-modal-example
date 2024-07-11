@@ -2,7 +2,7 @@
 #
 # To get started with Next.js see: https://nextjs.org/docs/getting-started
 #
-name: Deploy Next.js site to Pages
+name: Deploy Next.js site to GitHub Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -29,45 +29,40 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+
+      - name: Use pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
 
       - name: Setup Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: "16"
-          cache: "npm"
+          node-version: "20"
 
       - name: Setup Pages
-        uses: actions/configure-pages@v2
-        with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: next
+        uses: actions/configure-pages@v4
 
       - name: Restore cache
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
-          path: |
-            .next/cache
+          path: ${{ github.workspace }}/.next/cache
           # Generate a new cache whenever packages or source files change.
-          key: next-js-${{ hashFiles('**/package.json') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-next-js-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
-            next-js-${{ hashFiles('**/package.json') }}-
+            ${{ runner.os }}-next-js-${{ hashFiles('**/pnpm-lock.yaml') }}-
+            ${{ runner.os }}-next-js-
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
-      - name: Build with Next.js
-        run: npx --no-install next build
-
-      - name: Static HTML export with Next.js
-        run: npx --no-install next export
+      - name: Build Next.js app
+        run: pnpm run build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: ./out
 
@@ -81,4 +76,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4

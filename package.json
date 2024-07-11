@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "serve out",
     "lint:check": "next lint",
     "lint:fix": "next lint --fix"
   },
@@ -14,7 +14,8 @@
     "framer-motion": "^11.3.1",
     "next": "14.2.5",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "serve": "^14.2.3"
   },
   "devDependencies": {
     "@types/node": "20.14.10",
