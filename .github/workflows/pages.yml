@@ -1,11 +1,6 @@
-# Sample workflow for building and deploying a Next.js site to GitHub Pages
-#
-# To get started with Next.js see: https://nextjs.org/docs/getting-started
-#
 name: Deploy Next.js site to GitHub Pages
 
 on:
-  # Runs on pushes targeting the default branch
   push:
     branches: ["master"]
 
@@ -24,7 +19,6 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build job
   build:
     runs-on: ubuntu-latest
     steps:
@@ -34,7 +28,7 @@ jobs:
       - name: Use pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 8
+          version: 9
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -66,7 +60,6 @@ jobs:
         with:
           path: ./out
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
