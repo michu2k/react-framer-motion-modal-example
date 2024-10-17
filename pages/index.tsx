@@ -32,11 +32,11 @@ const Home: NextPage = () => {
                 <h1>Modal</h1>
 
                 <p className={styles.demoDescription}>
-                    A basic example how to create an animatable Modal component using the {" "}
+                    A simple example showcasing an animatable Modal component built with the {" "}
                     <a href="https://www.framer.com/motion/" className={styles.link} target="_blank" rel="noreferrer">
-                        framer-motion
+                        Framer Motion
                     </a> {" "}
-                    package.
+                    library.
                 </p>
 
                 <button type="button" onClick={showModal} className={styles.openModalBtn}>
